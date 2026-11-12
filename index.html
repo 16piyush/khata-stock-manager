@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chhuara Hisaab</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#f7f1e8;--card:#fffdf9;--tx:#2a1d12;--mu:#8a7867;--ac:#7a3e0e;--ac2:#f1e1cb;--gold:#c8872e;--bd:#eadccb;--gd:#1f7a45;--rd:#b3261e;--sh:0 2px 10px rgba(80,45,10,.08)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#16110d;--card:#231a13;--tx:#f4eadd;--mu:#b5a28e;--ac:#e3a468;--ac2:#3a2a1c;--gold:#e3a468;--bd:#3b2f25;--gd:#5fd08a;--rd:#ff8a80;--sh:none}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#16110d;--card:#231a13;--tx:#f4eadd;--mu:#b5a28e;--ac:#e3a468;--ac2:#3a2a1c;--gold:#e3a468;--bd:#3b2f25;--gd:#5fd08a;--rd:#ff8a80;--sh:none}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(135deg,#5a2b08,#9a5a1c);color:#fff;padding:16px 16px 22px;border-radius:0 0 22px 22px}
+.hd{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font:700 22px "Fraunces",Georgia,serif}.logo small{display:block;font:400 12px "DM Sans",sans-serif;opacity:.75}
+.ib{background:rgba(255,255,255,.16);border:0;color:#fff;width:38px;height:38px;border-radius:50%;font-size:17px;margin-left:6px}
+main{max-width:860px;margin:-12px auto 0;padding:0 12px 96px}
+nav{display:flex;gap:6px;margin:10px 0;background:var(--card);padding:6px;border-radius:14px;box-shadow:var(--sh);border:1px solid var(--bd)}
+nav button{flex:1;border:0;background:none;color:var(--mu);padding:9px 6px;border-radius:10px;font:500 13px "DM Sans",sans-serif;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button i{font-style:normal;font-size:18px}
+nav button.on{background:var(--ac);color:#fff}
+@media (max-width:700px){nav{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));margin:0;z-index:20}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin:10px 0;box-shadow:var(--sh)}
+.hero{background:linear-gradient(135deg,var(--ac),#a8641f);color:#fff;border:0}
+.hero .k{color:rgba(255,255,255,.8)}.hero .v{font:700 32px "Fraunces",Georgia,serif;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.grid .card{margin:0}
+.k{font-size:12px;color:var(--mu);letter-spacing:.02em}.v{font:700 20px "Fraunces",Georgia,serif}
+.g{color:var(--gd)}.r{color:var(--rd)}
+h2{font:700 18px "Fraunces",Georgia,serif;margin:0 0 4px}
+label{display:block;font-size:12px;font-weight:500;color:var(--mu);margin:12px 0 4px}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+input:focus,select:focus{outline:2px solid var(--gold);border-color:transparent}
+.row{display:flex;gap:8px}.row>*{flex:1}.row>.f0{flex:0 0 auto}
+.p{background:linear-gradient(135deg,var(--ac),#a8641f);color:#fff;border:0;padding:13px 14px;border-radius:12px;font:700 15px "DM Sans",sans-serif;width:100%;margin-top:14px}
+.s{background:var(--ac2);color:var(--ac);border:0;padding:9px 12px;border-radius:10px;font:500 13px "DM Sans",sans-serif;white-space:nowrap}
+.x{background:none;border:0;color:var(--rd);font-size:13px}
+.tot{background:var(--ac2);border-radius:12px;padding:10px 14px;margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+.hint{background:var(--ac2);color:var(--ac);border-radius:10px;padding:8px 10px;font-size:13px;margin-top:6px}
+.li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid var(--bd)}.li:last-child{border:0}
+.pill{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--ac2);color:var(--ac)}
+.bar{height:6px;background:var(--ac2);border-radius:6px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--gold)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:8px 6px;border-bottom:1px solid var(--bd);text-align:left;white-space:nowrap}th{font-size:12px;color:var(--mu);font-weight:500}
+.b{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#mod{display:none;position:fixed;inset:0;background:rgba(20,10,0,.5);z-index:50;align-items:center;justify-content:center;padding:16px}#mod.on{display:flex}
+.sheet{background:var(--card);border-radius:18px;padding:18px;width:100%;max-width:380px;border:1px solid var(--bd)}.mt{font:700 18px "Fraunces",Georgia,serif}.sheet .p{margin-top:0}
+.mb{margin-top:16px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#2a1d12;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:60}#toast.on{opacity:1}
+a{color:var(--ac)}
+</style>
+</head>
+<body>
+<header><div class="hd"><div class="logo">🌴 Chhuara Hisaab<small>Stock, sales and ledger</small></div><div><button class="ib" title="History" onclick="go('hist')">📜</button><button class="ib" title="Backup" onclick="go('bk')">💾</button></div></div></header>
+<main><nav id="nav"></nav><div id="app"></div></main>
+<div id="mod"></div><div id="toast"></div>
+<script>
+var S,tab='dash',pid=null,D={},KEY='chhuara_hisaab_v1';
+function load(){try{S=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){S=null}if(!S)S={items:[],parties:[],tx:[]}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('Could not save on this device')}}
+var uid=function(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)};
+var today=function(){var d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+var fmt=function(n){return '₹'+(Math.round(n*100)/100).toLocaleString('en-IN')};
+var kg=function(n){return (Math.round(n*100)/100)+' kg'};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var $=function(i){return document.getElementById(i)};
+function nm(l,id){var o=l.find(function(x){return x.id===id});return o?o.name:'-'}
+function stock(id){return S.tx.reduce(function(a,t){return t.item!==id?a:a+(t.type==='purchase'?t.qty:t.type==='sale'||t.type==='waste'?-t.qty:0)},0)}
+function avgCost(id){var q=0,m=0;S.tx.forEach(function(t){if(t.item===id&&t.type==='purchase'){q+=t.qty;m+=t.total}});return q?m/q:0}
+function bal(p){return S.tx.reduce(function(a,t){return t.party===p?a+t.total-t.paid:a},0)}
+function profit(from){var p=0;S.tx.forEach(function(t){if(t.type==='sale'&&(!from||t.date>=from))p+=t.total-t.qty*avgCost(t.item)});return p}
+function sum(type,from){return S.tx.filter(function(t){return t.type===type&&(!from||t.date>=from)}).reduce(function(a,t){return a+t.total},0)}
+function toast(m){var e=$('toast');e.textContent=m;e.className='on';setTimeout(function(){e.className=''},2200)}
+function closeM(){$('mod').className='';$('mod').innerHTML=''}
+function modal(t,f,ok,cb){var m=$('mod');m.innerHTML='<div class="sheet"><div class="mt">'+t+'</div>'+f.map(function(x){return x.html?x.html:'<label>'+x.l+'</label><input id="m_'+x.id+'" type="'+(x.t||'text')+'" placeholder="'+(x.ph||'')+'"'+(x.t==='number'?' inputmode="decimal"':'')+'>'}).join('')+'<div class="row mb"><button class="s" onclick="closeM()">Cancel</button><button class="p" id="m_ok">'+ok+'</button></div></div>';m.className='on';var i=m.querySelector('input');if(i)i.focus();$('m_ok').onclick=function(){var v={};f.forEach(function(x){if(x.id)v[x.id]=$('m_'+x.id).value.trim()});if(cb(v)!==false)closeM()}}
+function ask(msg,ok,cb){modal('Please confirm',[{html:'<p style="margin:8px 0 0">'+msg+'</p>'}],ok,function(){cb()})}
+function keep(){if(!$('f_p'))return;var g=function(i){return $(i).value};D={d:g('f_d'),p:g('f_p'),i:g('f_i'),q:g('f_q'),r:g('f_r'),a:g('f_a'),n:g('f_n'),m:$('f_a').dataset.m}}
+
+function nav(){var T=[['dash','🏠','Home'],['sale','💰','Sale'],['purchase','🛒','Purchase'],['stock','📦','Stock'],['parties','📒','Ledger']];
+$('nav').innerHTML=T.map(function(t){return '<button class="'+(tab===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')"><i>'+t[1]+'</i>'+t[2]+'</button>'}).join('')}
+function go(t){tab=t;pid=null;D={};render();window.scrollTo(0,0)}
+
+function kc(k,v,cl){return '<div class="card"><div class="k">'+k+'</div><div class="v '+(cl||'')+'">'+v+'</div></div>'}
+function dash(){var d=today(),m=d.slice(0,7)+'-01',rec=0,pay=0;
+S.parties.forEach(function(p){var b=bal(p.id);if(p.type==='customer')rec+=b;else pay+=b});
+var sv=S.items.reduce(function(a,i){return a+Math.max(0,stock(i.id))*avgCost(i.id)},0);
+var low=S.items.filter(function(i){return i.min&&stock(i.id)<=i.min});
+return '<div class="card hero"><div class="k">Today’s sales</div><div class="v">'+fmt(sum('sale',d))+'</div><div class="k" style="margin-top:6px">Profit this month: '+fmt(profit(m))+'</div></div>'+
+'<div class="grid">'+kc('Today’s purchases',fmt(sum('purchase',d)))+kc('Total profit',fmt(profit()),'g')+kc('Stock value',fmt(sv))+kc('To receive',fmt(rec),'g')+kc('To pay',fmt(pay),'r')+'</div>'+
+'<div class="card"><div class="b"><h2>Stock left</h2><span class="v">'+kg(S.items.reduce(function(a,i){return a+Math.max(0,stock(i.id))},0))+'</span></div>'+(S.items.length?S.items.map(function(i){var s=stock(i.id),l=i.min&&s<=i.min;return '<div class="li"><span>'+esc(i.name)+(l?' <span class="pill">Low</span>':'')+'</span><b class="'+(l?'r':'')+'">'+kg(s)+'</b></div>'}).join(''):'<div class="k">No products yet. Add one in the Stock tab.</div>')+'</div>'+
+(S.items.length||S.parties.length?'':'<div class="card"><h2>Get started</h2><div class="k">Add your products in the Stock tab, then record your first purchase and sale.</div><button class="p" onclick="go(\'stock\')">Add products</button></div>')}
+
+function opts(list,sel,type,ph){return '<option value="">'+ph+'</option>'+list.filter(function(x){return !type||x.type===type}).map(function(x){return '<option value="'+x.id+'"'+(x.id===sel?' selected':'')+'>'+esc(x.name)+(x.min!==undefined&&type===undefined&&tab==='sale'?' ('+kg(stock(x.id))+' in stock)':'')+'</option>'}).join('')}
+function entry(type){var sale=type==='sale',pt=sale?'customer':'supplier',np=S.parties.filter(function(p){return p.type===pt}).length;
+return '<div class="card"><h2>'+(sale?'New sale':'New purchase')+'</h2><div class="k">'+(sale?'Sell to a wholesale or shop customer':'Record stock bought from a supplier')+'</div>'+
+'<label>Date</label><input type="date" id="f_d" value="'+(D.d||today())+'">'+
+'<label>'+(sale?'Customer':'Supplier')+'</label><div class="row"><select id="f_p">'+opts(S.parties,D.p,pt,'Select '+pt)+'</select><button class="s f0" onclick="addParty(\''+pt+'\')">+ New</button></div>'+(np?'':'<div class="hint">No '+pt+'s yet. Tap + New to add one.</div>')+
+'<label>Product</label><div class="row"><select id="f_i">'+opts(S.items,D.i,undefined,'Select product')+'</select><button class="s f0" onclick="addItem()">+ New</button></div>'+(S.items.length?'':'<div class="hint">No products yet. Tap + New to add one, for example Kala or Lal.</div>')+
+'<div class="row"><div><label>Quantity (kg)</label><input type="number" id="f_q" inputmode="decimal" value="'+(D.q||'')+'" oninput="calc()"></div><div><label>Rate (₹ per kg)</label><input type="number" id="f_r" inputmode="decimal" value="'+(D.r||'')+'" oninput="calc()"></div></div>'+
+'<div class="tot"><span class="k">Total</span><span class="v" id="f_t">₹0</span></div>'+
+'<label>'+(sale?'Amount received now':'Amount paid now')+'</label><input type="number" id="f_a" inputmode="decimal" value="'+(D.a||'')+'" oninput="this.dataset.m=1">'+
+'<div class="row" style="margin-top:8px"><button class="s" onclick="setPaid(1)">Full amount</button><button class="s" onclick="setPaid(0)">On credit</button></div>'+
+'<label>Note (optional)</label><input id="f_n" value="'+esc(D.n||'')+'">'+
+'<button class="p" onclick="saveTx(\''+type+'\')">Save '+(sale?'sale':'purchase')+'</button></div>'}
+function calc(){var t=(+$('f_q').value||0)*(+$('f_r').value||0);$('f_t').textContent=fmt(t);var a=$('f_a');if(!a.dataset.m)a.value=t||''}
+function setPaid(full){var a=$('f_a');a.dataset.m=1;a.value=full?(+$('f_q').value||0)*(+$('f_r').value||0)||'':0}
+function addParty(type){keep();modal('New '+type,[{id:'n',l:'Name'},{id:'ph',l:'Phone (optional)',t:'tel'}],'Add',function(v){if(!v.n){toast('Please enter a name');return false}var o={id:uid(),name:v.n,type:type,phone:v.ph};S.parties.push(o);save();D.p=o.id;render();toast(v.n+' added')})}
+function addItem(){keep();modal('New product',[{id:'n',l:'Name or grade',ph:'e.g. Kala, Lal, Jumbo'},{id:'m',l:'Low stock alert at (kg, optional)',t:'number'}],'Add',function(v){if(!v.n){toast('Please enter a name');return false}var o={id:uid(),name:v.n,min:+v.m||0};S.items.push(o);save();D.i=o.id;render();toast(v.n+' added')})}
+function saveTx(type){var g=function(i){return $(i).value};var p=g('f_p'),i=g('f_i'),q=+g('f_q'),r=+g('f_r'),a=+g('f_a')||0,t=q*r;
+if(!p||!i){toast('Select the '+(type==='sale'?'customer':'supplier')+' and the product');return}
+if(!(q>0)||!(r>0)){toast('Enter quantity and rate');return}
+if(a>t){toast('Amount cannot be more than the total');return}
+var go2=function(){S.tx.push({id:uid(),date:g('f_d'),type:type,party:p,item:i,qty:q,rate:r,total:t,paid:a,note:g('f_n')});save();D={};render();toast('Saved')};
+if(type==='sale'&&q>stock(i))ask('Only '+kg(stock(i))+' in stock. Save this sale anyway?','Save anyway',go2);else go2()}
+
+function stockView(){var mx=Math.max.apply(null,S.items.map(function(i){return stock(i.id)}).concat([1]));
+return '<div class="card"><div class="b"><h2>Stock</h2><button class="s" onclick="addItem()">+ New product</button></div>'+
+S.items.map(function(i){var s=stock(i.id);return '<div class="li"><div style="flex:1"><div class="t"><b>'+esc(i.name)+'</b></div><div class="k">Avg cost '+fmt(avgCost(i.id))+'/kg · Value '+fmt(Math.max(0,s)*avgCost(i.id))+'</div><div class="bar"><i style="width:'+Math.max(0,Math.min(100,s/mx*100))+'%"></i></div></div><div style="text-align:right"><div class="v '+(i.min&&s<=i.min?'r':'')+'">'+kg(s)+'</div><button class="s" style="margin-top:4px" onclick="waste(\''+i.id+'\')">Wastage</button></div></div>'}).join('')+
+(S.items.length?'':'<div class="hint">No products yet. Add one to begin.</div>')+'</div>'}
+function waste(id){modal('Wastage / loss',[{id:'q',l:'Kg spoiled or short',t:'number'}],'Record',function(v){if(!(+v.q>0)){toast('Enter a quantity');return false}S.tx.push({id:uid(),date:today(),type:'waste',party:'',item:id,qty:+v.q,rate:0,total:0,paid:0,note:'Wastage'});save();render();toast('Recorded')})}
+
+function parties(){
+if(pid){var p=S.parties.find(function(x){return x.id===pid}),b=bal(pid),cu=p.type==='customer';
+var rows=S.tx.filter(function(t){return t.party===pid}).sort(function(a,c){return a.date<c.date?-1:1});
+var wa=p.phone&&b>0?'<a href="https://wa.me/91'+p.phone.replace(/\D/g,'').slice(-10)+'?text='+encodeURIComponent('Hello '+p.name+', '+fmt(b)+' is pending. Please send it when you can.')+'" target="_blank" rel="noopener">Send WhatsApp reminder</a>':'';
+return '<button class="s" onclick="pid=null;render()">← Back</button><div class="card hero" style="margin-top:12px"><div class="k">'+esc(p.name)+' · '+(cu?'Customer':'Supplier')+'</div><div class="v">'+fmt(Math.abs(b))+'</div><div class="k">'+(b>0?(cu?'To receive from them':'To pay to them'):b<0?'Advance paid':'All settled')+'</div></div>'+
+'<div class="card">'+wa+'<button class="p" style="margin-top:'+(wa?10:0)+'px" onclick="pay(\''+pid+'\')">'+(cu?'Record payment received':'Record payment made')+'</button></div>'+
+'<div class="card tw"><h2>Statement</h2><table><tr><th>Date</th><th>Detail</th><th>Total</th><th>Paid</th></tr>'+rows.map(function(t){return '<tr><td>'+t.date+'</td><td>'+(t.type==='payment'?'Payment':esc(nm(S.items,t.item))+' '+kg(t.qty)+' @ '+t.rate)+'</td><td>'+fmt(t.total)+'</td><td>'+fmt(t.paid)+'</td></tr>'}).join('')+'</table></div>'}
+return '<div class="card"><div class="b"><h2>Ledger</h2><span class="row"><button class="s" onclick="addParty(\'customer\')">+ Customer</button><button class="s" onclick="addParty(\'supplier\')">+ Supplier</button></span></div>'+
+S.parties.map(function(p){var b=bal(p.id),cu=p.type==='customer';return '<div class="li" onclick="pid=\''+p.id+'\';render()"><span><b>'+esc(p.name)+'</b><div><span class="pill">'+(cu?'Customer':'Supplier')+'</span></div></span><span class="v '+(b>0?(cu?'g':'r'):'')+'">'+fmt(b)+'</span></div>'}).join('')+(S.parties.length?'':'<div class="hint">No parties yet. Add a customer or supplier.</div>')+'</div>'}
+function pay(id){modal('Record payment',[{id:'a',l:'Amount (₹)',t:'number'}],'Save',function(v){if(!(+v.a>0)){toast('Enter an amount');return false}S.tx.push({id:uid(),date:today(),type:'payment',party:id,item:'',qty:0,rate:0,total:0,paid:+v.a,note:'Payment'});save();render();toast('Payment recorded')})}
+
+function hist(){return '<div class="card tw"><h2>All entries</h2><table><tr><th>Date</th><th>Type</th><th>Party</th><th>Product</th><th>Kg</th><th>Total</th><th>Paid</th><th></th></tr>'+
+S.tx.slice().sort(function(a,b){return a.date<b.date?1:-1}).slice(0,200).map(function(t){return '<tr><td>'+t.date+'</td><td>'+{sale:'Sale',purchase:'Purchase',payment:'Payment',waste:'Wastage'}[t.type]+'</td><td>'+esc(nm(S.parties,t.party))+'</td><td>'+esc(nm(S.items,t.item))+'</td><td>'+(t.qty||'')+'</td><td>'+fmt(t.total)+'</td><td>'+fmt(t.paid)+'</td><td><button class="x" onclick="del(\''+t.id+'\')">Delete</button></td></tr>'}).join('')+'</table>'+(S.tx.length?'':'<div class="hint">No entries yet.</div>')+'</div>'}
+function del(id){ask('Delete this entry? Stock and balances will update.','Delete',function(){S.tx=S.tx.filter(function(t){return t.id!==id});save();render();toast('Deleted')})}
+
+function bk(){return '<div class="card"><h2>Backup and restore</h2><div class="k">Copy the backup text and keep it in Notes or WhatsApp. Paste it on another device to restore.</div><button class="p" onclick="exp()">Show backup text</button><label>Restore from backup</label><textarea id="bkt" rows="6" style="width:100%;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)" placeholder="Paste backup text here"></textarea><button class="p" onclick="imp()">Restore</button></div>'}
+function exp(){var e=$('bkt');e.value=JSON.stringify(S);e.select()}
+function imp(){var d;try{d=JSON.parse($('bkt').value);if(!d.items||!d.parties||!d.tx)throw 0}catch(e){toast('That backup text is not valid');return}ask('This replaces all current data. Continue?','Restore',function(){S=d;save();render();toast('Restored')})}
+
+function render(){nav();var h={dash:dash,sale:function(){return entry('sale')},purchase:function(){return entry('purchase')},stock:stockView,parties:parties,hist:hist,bk:bk}[tab]();$('app').innerHTML=h;if($('f_q'))calc()}
+load();render();
+</script>
+</body>
+</html>
